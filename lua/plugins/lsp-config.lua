@@ -12,6 +12,12 @@ return {
     opts = {
       auto_install = true,
     },
+
+    config = function ()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "tsserver"}
+      })
+    end
   },
   {
     "neovim/nvim-lspconfig",
@@ -21,7 +27,6 @@ return {
 
       local lspconfig = require("lspconfig")
       lspconfig.tsserver.setup({
-        capabilities = capabilities
       })
       lspconfig.solargraph.setup({
         capabilities = capabilities
