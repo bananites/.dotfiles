@@ -1,0 +1,42 @@
+bind r
+bind r source-file ~/.tmux.conf
+set -g prefix  C-s
+
+#use vim binding for moving panes
+bind-key h select-pane -L  
+bind-key l select-pane -R  
+bind-key k select-pane -U  
+bind-key j select-pane -D  
+
+
+#position of status bar
+set-option -g status-position top
+
+# set opening a new window in current path
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+#theme
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @tmux-everforest 'dark-medium'
+set -g @plugin 'TanglingTreats/tmux-everforest'
+
+# set mouse mode
+set -g mouse on
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'github_username/plugin_name#branch'
+# set -g @plugin 'git@github.com:user/plugin'
+# set -g @plugin 'git@bitbucket.com:user/plugin'
+
+
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

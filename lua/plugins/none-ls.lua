@@ -10,7 +10,6 @@ return {
         require("none-ls.diagnostics.eslint_d"),
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.diagnostics.erb_lint,
         null_ls.builtins.diagnostics.djlint,
         null_ls.builtins.formatting.djlint,
         null_ls.builtins.diagnostics.stylelint,

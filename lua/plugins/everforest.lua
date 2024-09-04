@@ -1,22 +1,13 @@
 return {
-	--[[ /**{
-    "mellow-theme/mellow.nvim",
-    lazy = false,
-    name = "mellow",
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "mellow"
-    end
-  }]]
-
-  "neanias/everforest-nvim",
+  "no-clown-fiesta/no-clown-fiesta.nvim",
   version = false,
   lazy= false,
   priority = 1000,
   config = function ()
-    require("everforest").setup({
-
+    require("no-clown-fiesta").setup({
+      transparent = false,
+      styles ={}
     })
-   vim.cmd([[colorscheme everforest]])
+   vim.cmd([[colorscheme no-clown-fiesta]])
  end,
 }

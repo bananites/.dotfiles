@@ -40,8 +40,10 @@ vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
 
+-- update diagnostics on insert
 vim.diagnostic.config({
   update_in_insert = true,
-
-
 })
+
+-- disable showmode because its active in lualine
+vim.opt.showmode =false;
