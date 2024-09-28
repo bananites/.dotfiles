@@ -1,4 +1,0 @@
-canon-pixma-ts5055-complete
-cups-bjnp
-yay
-yay-debug

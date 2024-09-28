@@ -7,15 +7,6 @@ vim.g.background = "light"
 
 vim.opt.swapfile = false
 
--- set autosave
-vim.api.nvim_create_autocmd({"InsertLeave", "TextChanged"},{
-  pattern = "*",
-  callback  = function()
-    if vim.bo.modified then
-      vim.cmd("silent! write")
-    end
-  end,
-})
 --save undo history
 vim.opt.undofile = true
 
