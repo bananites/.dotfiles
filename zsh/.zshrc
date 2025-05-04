@@ -116,4 +116,5 @@ alias gs="git status"
 alias gd="git diff"
 alias gp="git push"
 alias gpl="git pull"
+alias pac="sudo pacman"
 
