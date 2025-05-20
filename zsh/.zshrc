@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="trapd00r"
 
-#nvm 
+#nvm
 source /usr/share/nvm/init-nvm.sh
 
 # Set list of themes to pick from when loading at random
@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='helix'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -117,4 +117,10 @@ alias gd="git diff"
 alias gp="git push"
 alias gpl="git pull"
 alias pac="sudo pacman"
+alias nv="nvim"
+alias vim="nvim"
+alias vi="nvim"
 
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
