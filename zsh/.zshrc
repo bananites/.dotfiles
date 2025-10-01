@@ -120,6 +120,7 @@ alias pac="sudo pacman"
 alias nv="nvim"
 alias vim="nvim"
 alias vi="nvim"
+alias game="nohup ~/Documents/godot4.4.1.x86_64 > /dev/null 2>&1 &"
 
 
 # Load Angular CLI autocompletion.
