@@ -3,6 +3,7 @@
   imports = [
    nixvim.homeModules.nixvim 
    ./keymappings.nix
+   ./nixvim.nix
   ];
 
 	home.username = "bananites";
@@ -11,6 +12,10 @@
 
   # windowManager
   home.file.".config/i3/config".source = ./configs/i3/config;
+
+  #nvim
+  #  home.file.".config/nvim".source = ./configs/nvim;
+  
 
   
   home.packages = with pkgs; [
@@ -26,10 +31,20 @@
     tmux
     ripgrep
     nixpkgs-fmt
-    
+    unzip
+    wget
+    nodejs
+
+    #neovim
     fzf
     tree-sitter
     fd
+    gcc
+
+    #language servers
+    lua-language-server
+    typescript-language-server
+    vscode-langservers-extracted
 
   ];
 
@@ -127,35 +142,6 @@
   };
 
 
-
-  programs.nixvim = {
-
-
-    enable = true;
-    defaultEditor = true;
-    luaLoader.enable = true;
-
-
-    colorschemes.base16 ={
-    enable = true;
-    colorscheme= "black-metal";
-#    colorscheme= "ashes";
-    };
-
-    clipboard.providers.xclip.enable = true;
-    plugins ={
-      lualine.enable = true;
-      telescope= {
-        enable = true;
-        extensions.fzf-native.enable = true;
-      };
-      comment.enable = true;
-      treesitter= {
-        enable = true;
-      };
-
-    };
-  };
 
     programs.git = {
       enable = true;

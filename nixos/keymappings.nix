@@ -10,7 +10,7 @@
 # oil mapping for file tree
       {
         action = ":Oil<CR>";
-        key = "<leader>o";
+        key = "-";
         options = {
           silent = true;
           noremap = true;
@@ -213,6 +213,15 @@
           silent = true;
           noremap = true;
           desc = "Move to the pane on the left";
+        };
+      }
+      {
+        action = "<C-w>l";
+        key = "<C-h>";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Move to the pane on the right";
         };
       }
       {
