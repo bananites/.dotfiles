@@ -2,17 +2,15 @@
 {
   imports = [
    nixvim.homeModules.nixvim 
+   ./keymappings.nix
   ];
 
 	home.username = "bananites";
 	home.homeDirectory = "/home/bananites";
 	home.stateVersion = "25.05";
-	programs.bash ={
-		enable = true;
-	};
 
   # windowManager
-#  home.file.".config/i3/config".source = ./configs/i3/config;
+  home.file.".config/i3/config".source = ./configs/i3/config;
 
   
   home.packages = with pkgs; [
@@ -20,17 +18,29 @@
     kitty
     firefox
     flameshot
-    nautilus
     thunderbird
     arandr
+    lazygit
 
+    xclip
     tmux
     ripgrep
     nixpkgs-fmt
+    
+    fzf
+    tree-sitter
+    fd
 
   ];
 
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+    vscodevim.vim
+    ];
+  };
 
+  programs.bash.enable = true;
 
   programs.zsh ={
     enable = true;
@@ -42,9 +52,43 @@
     ];
 
 
+    plugins = [
+        # Autocompletions
+        {
+          name = "zsh-autosuggestions";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-autosuggestions";
+            rev = "v0.7.1";
+            hash = "sha256-vpTyYq9ZgfgdDsWzjxVAE7FZH4MALMNZIFyEOBLm5Qo=";
+          };
+        }
+        # Completion scroll
+        {
+          name = "zsh-completions";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-completions";
+            rev = "0.35.0";
+            hash = "sha256-GFHlZjIHUWwyeVoCpszgn4AmLPSSE8UVNfRmisnhkpg=";
+          };
+        }
+        # Highlight commands in terminal
+        {
+          name = "zsh-syntax-highlighting";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-syntax-highlighting";
+            rev = "0.8.0";
+            hash = "sha256-iJdWopZwHpSyYl5/FQXEW7gl/SrKaYDEtTH9cGP7iPo=";
+          };
+        }
+      ];
+
   shellAliases = {
     ll = "ls -l";
-    update = "sudo nixos-rebuild switch";
+    update = "sudo nixos-rebuild switch --flake ~/Workspace/.dotfiles/nixos";
+
   };
   history.size = 10000;
 
@@ -64,12 +108,13 @@
       fi
 
       alias hx="helix"
-      alias w="~/Workspaces"
+      alias w="~/Workspace"
+      alias n="~/Workspace/.dotfiles/nixos/"
       alias die="shutdown now"
       alias mk="mkdir"
       alias c="clear"
       alias gc="git commit -m"
-      alias ga="git add"
+      alias ga="git add ."
       alias gs="git status"
       alias gd="git diff"
       alias gp="git push"
@@ -82,10 +127,34 @@
   };
 
 
+
   programs.nixvim = {
+
+
     enable = true;
-    colorschemes.catppuccin.enable = true;
-    plugins.lualine.enable = true;
+    defaultEditor = true;
+    luaLoader.enable = true;
+
+
+    colorschemes.base16 ={
+    enable = true;
+    colorscheme= "black-metal";
+#    colorscheme= "ashes";
+    };
+
+    clipboard.providers.xclip.enable = true;
+    plugins ={
+      lualine.enable = true;
+      telescope= {
+        enable = true;
+        extensions.fzf-native.enable = true;
+      };
+      comment.enable = true;
+      treesitter= {
+        enable = true;
+      };
+
+    };
   };
 
     programs.git = {
