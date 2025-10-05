@@ -64,7 +64,7 @@
   users.users.bananites = {
     isNormalUser = true;
     description = "bananites";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
 
     shell = pkgs.zsh;
@@ -75,16 +75,20 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  virtualisation.docker.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+  docker-compose
   tmux
   neovim
   git
   neofetch
   ];
+
   programs.zsh.enable = true;
   programs.thunar.enable = true;
   programs.xfconf.enable = true;

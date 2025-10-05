@@ -15,7 +15,7 @@
 
   #nvim
   #  home.file.".config/nvim".source = ./configs/nvim;
-  
+ 
 
   
   home.packages = with pkgs; [
@@ -50,7 +50,7 @@
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
     vscodevim.vim
     ];
   };
