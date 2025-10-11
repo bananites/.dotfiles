@@ -12,6 +12,8 @@
 
   # windowManager
   home.file.".config/i3/config".source = ./configs/i3/config;
+  # wallpaper
+  home.file.".config/wallpaper".source = ./configs/i3/vim-wallpaper.png;
 
   #nvim
   #  home.file.".config/nvim".source = ./configs/nvim;
@@ -19,8 +21,15 @@
 
   
   home.packages = with pkgs; [
+    git-filter-repo
 
+    i3
     kitty
+    feh
+    lxappearance
+    materia-theme 
+    htop
+
     firefox
     flameshot
     thunderbird
@@ -40,11 +49,7 @@
     tree-sitter
     fd
     gcc
-
-    #language servers
-    lua-language-server
-    typescript-language-server
-    vscode-langservers-extracted
+    prettierd
 
   ];
 
