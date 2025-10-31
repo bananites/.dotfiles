@@ -128,9 +128,9 @@
           # Lets you run `nix run .#python` to start nixvim with Python configuration
           python = pythonNvim;
           # Lets you run `nix run .#javascript` to start nixvim with JS/TS configuration
-          nvjs = javascriptNvim;
+          javascript = javascriptNvim;
           # Lets you run `nix run .#iac` to start nixvim with IaC configuration
-          nviac = iacNvim;
+          iac = iacNvim;
         };
       };
     };

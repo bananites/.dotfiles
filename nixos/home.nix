@@ -2,8 +2,9 @@
 {
   imports = [
    nixvim.homeModules.nixvim 
-   ./keymappings.nix
-   ./nixvim.nix
+   ./nixvim/keymappings.nix
+   ./nixvim/nixvim.nix
+   ./nixvim/plugins/plugins.nix
   ];
 
 	home.username = "bananites";
@@ -29,6 +30,8 @@
     lxappearance
     materia-theme 
     htop
+    docker-compose
+
 
     firefox
     flameshot
@@ -50,7 +53,6 @@
     fd
     gcc
     prettierd
-
   ];
 
   programs.vscode = {
@@ -114,7 +116,7 @@
 
     oh-my-zsh= {
       enable = true;
-      plugins = [ "git" "dirhistory" "history" ];
+      plugins = ["git" "dirhistory" "history" ];
       theme = "trapd00r";
     };
 

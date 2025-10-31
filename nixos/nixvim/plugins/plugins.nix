@@ -1,26 +1,7 @@
 {
- programs.nixvim = {
 
-   enable = true;
-   defaultEditor = true;
-   luaLoader.enable = true;
-
-   opts = {
-     number= true;
-     relativenumber = true;
-   };
-
-   colorschemes.base16 = {
-   enable = true;
-   colorscheme= "black-metal";
-  #colorscheme= "ashes";
-   };
-
-
-   clipboard.providers.xclip.enable = true;
-
-
-   plugins ={
+  programs.nixvim.plugins ={
+    auto-save.enable = true;
      zen-mode.enable = true;
      undotree.enable = true;
      trouble.enable = true;
@@ -40,8 +21,13 @@
      oil = {
        enable = true;
        settings = {
+        columns=  [
+        "permissions"
+        "size"
+        "mtime"
+        ];
          view_options ={
-	   show_hidden = true;
+      show_hidden = true;
 	 };
        };
      };
@@ -60,6 +46,7 @@
        enable = true;
        servers = {
        eslint.enable = true;
+       dockerls.enable = true;
 
 
        ts_ls= {
@@ -112,6 +99,4 @@ extraOptions = {
      };
 
    };
- };
-
-}
+  }

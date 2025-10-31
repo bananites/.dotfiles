@@ -48,6 +48,11 @@
     variant = "";
   };
 
+  #audio
+  services.pipewire.enable= false;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+
   #display manager
   services.xserver ={
     enable = true;
@@ -56,7 +61,6 @@
   };
   services.displayManager.ly.enable = true;
 
-
   # Configure console keymap
   console.keyMap = "de";
 
@@ -64,10 +68,28 @@
   users.users.bananites = {
     isNormalUser = true;
     description = "bananites";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
     packages = with pkgs; [];
 
     shell = pkgs.zsh;
+  };
+
+  #bluetooth
+  services.blueman.enable = true;
+  hardware.bluetooth= {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+    General ={
+
+      Experimental = true;
+      FastConnectable = true;
+    };
+    Policy = {
+      AutoEnable = true;
+    };
+    };
+
   };
 
   # Allow unfree packages
@@ -85,11 +107,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  docker-compose
+  lsof
+  pulseaudio
   tmux
   neovim
   git
-  neofetch
   ];
 
   programs.zsh.enable = true;
