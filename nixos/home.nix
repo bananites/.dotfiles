@@ -46,6 +46,7 @@
     unzip
     wget
     nodejs
+    python310
 
     #neovim
     fzf
@@ -61,6 +62,8 @@
     vscodevim.vim
     ];
   };
+
+  programs.lazysql.enable = true;
 
   programs.bash.enable = true;
 

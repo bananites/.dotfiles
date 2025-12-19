@@ -48,6 +48,12 @@
     variant = "";
   };
 
+  services.mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
+
+
   #audio
   services.pipewire.enable= false;
   hardware.pulseaudio.enable = true;
